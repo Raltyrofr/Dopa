@@ -1,195 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Dopa Launcher</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        html, body {
-            height: 100%;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            background: #fff;
-            color: #111;
-            font-family: Arial, sans-serif;
-        }
-        body {
-            min-height: 100vh;
-            min-width: 100vw;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .full {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            box-sizing: border-box;
-        }
-        .title {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 24px;
-            color: #111;
-        }
-        .desc {
-            font-size: 1.6rem;
-            color: #111;
-            margin-bottom: 40px;
-        }
-        .input {
-            width: 400px;
-            max-width: 90vw;
-            box-sizing: border-box;
-            padding: 26px 22px;
-            border: none;
-            border-bottom: 3px solid #111;
-            border-radius: 0;
-            font-size: 2rem;
-            margin-bottom: 34px;
-            background: #fff;
-            color: #111;
-            outline: none;
-            text-align: center;
-            letter-spacing: 0.3em;
-        }
-        .input.hide-dots {
-            letter-spacing: 0.3em;
-            font-family: Arial, sans-serif;
-        }
-        /* Hide password dots, show clear text */
-        .input.no-dots {
-            font-family: Arial, sans-serif;
-            letter-spacing: normal;
-        }
-        .btn {
-            width: 400px;
-            max-width: 90vw;
-            padding: 26px 0;
-            background: #27ae60;
-            color: #fff;
-            font-size: 2rem;
-            font-weight: 700;
-            border: none;
-            border-radius: 14px;
-            cursor: pointer;
-            transition: background 0.15s, color 0.15s;
-            margin-bottom: 20px;
-        }
-        .btn:hover, .btn:focus {
-            background: #219150;
-            color: #fff;
-        }
-        .toggle-btn {
-            background: #fff;
-            color: #111;
-            border: 2px solid #111;
-            border-radius: 10px;
-            padding: 10px 22px;
-            font-size: 1.05rem;
-            font-weight: 600;
-            cursor: pointer;
-            margin-bottom: 24px;
-            transition: background 0.15s, color 0.15s;
-        }
-        .toggle-btn.active {
-            background: #111;
-            color: #fff;
-        }
-        .error {
-            color: #b00020;
-            font-size: 1.5rem;
-            margin-top: 30px;
-            min-height: 32px;
-            letter-spacing: 0.1px;
-        }
-        @media (max-width: 600px) {
-            .title {
-                font-size: 1.7rem;
+    <head>
+        <style>
+            * {
+                text-decoration: none;
             }
-            .desc {
-                font-size: 1rem;
+            .red234 {
+                color: white;
             }
-            .input,
-            .btn {
-                font-size: 1.1rem;
-                padding: 14px 0;
-                width: 95vw;
-                max-width: 98vw;
-            }
-            .toggle-btn {
-                font-size: 1rem;
-                padding: 7px 10px;
-            }
-            .error {
-                font-size: 1rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="full">
-        <div class="title">Dopa Launch code</div>
-        <div class="desc">Enter launch code to access Mint Games.</div>
-        <input
-            type="password"
-            class="input hide-dots"
-            id="launchCode"
-            maxlength="16"
-            placeholder="Launch code"
-            autocomplete="off"
-            required
-        />
-        <button class="toggle-btn" id="toggleDotsBtn">Hide dots</button>
-        <button class="btn" id="openDopaBtn">Open dopa</button>
-        <div class="error" id="errorMsg"></div>
-    </div>
+        </style>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
     <script>
-        const LAUNCH_CODE = "75301796";
-        const codeInput = document.getElementById("launchCode");
-        const openBtn = document.getElementById("openDopaBtn");
-        const errorMsg = document.getElementById("errorMsg");
-        const toggleDotsBtn = document.getElementById("toggleDotsBtn");
+        window.addEventListener('beforeunload', function (event) {
+            event.preventDefault();
+            event.returnValue = '';
+            return 'Are you sure you want to leave? Any unsaved changes will be lost.';
+        });
+    </script>
+    <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5521219086088837" crossorigin="anonymous"></script>
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WX5VS54ZDW"></script>
+    <meta name="google-adsense-account" content="ca-pub-5521219086088837">
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-        let dotsHidden = false;
-
-        function checkCodeAndLaunch() {
-            if (codeInput.value.trim() === LAUNCH_CODE) {
-                window.location.href = "games.html";
-            } else {
-                errorMsg.textContent = "Incorrect launch code.";
-                codeInput.value = "";
-                codeInput.focus();
-            }
+        function gtag() {
+            dataLayer.push(arguments);
         }
+        gtag('js', new Date());
+        gtag('config', 'G-WX5VS54ZDW');
+    </script>
+    <script async src="https://fundingchoicesmessages.google.com/i/pub-5521219086088837?ers=1"></script><script>(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
+    <script src="https://cdn.jsdelivr.net/gh/gn-mathcopy/gn-mathcopy.github.io@main/gnmath.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gn-math</title>
+    <meta name="title" content="mint">
+    <meta name="description" content="Play unbl*cked games like Crazy Cattle 3D and DriveMad on mint. Fast, free, no downloads—perfect for school or home.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gnmathcopy.github.io/">
+    <meta property="og:title" content="mint">
+    <meta property="og:description" content="Play unbl*cked games like Crazy Cattle 3D and DriveMad on mint. Fast, free, no downloads—perfect for school or home.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://gnmathcopy.github.io/">
+    <meta name="twitter:title" content="mint">
+    <meta name="twitter:description" content="Play unbl*cked games like Crazy Cattle 3D and DriveMad on GN-Math. Fast, free, no downloads—perfect for school or home.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode">
+    <header>
+        <div class="header-content">
+            <div class="logo">Dopa THE REUP</div>
+            <div class="search-container">
+                <input type="text" id="searchBar" placeholder="Search zones..." oninput="filterZones()">
+                <select id="sortOptions" onchange="sortZones()">
+                    <option value="name">Name</option>
+                    <option value="id">ID (Date)</option>
+                    <option value="popular">Popular</option>
+                </select>
+            </div>
+            <div class="control-buttons">
+                <button id="settings" style="background-color: var(--primary-color); color: white; border: none; border-radius: 4px; padding: 0.5rem 1rem; font-size: 16px; cursor: pointer;">Settings</button>
+            </div>
+        </div>
+    </header>
+    <ins class="adsbygoogle"
+    style="display:block; text-align:center;"
+    data-ad-client="ca-pub-5521219086088837"
+    data-ad-slot="5549138288"
+    data-ad-format="auto"
+    data-full-width-responsive="true">
+    <h1 class="red234">Update:</h1>
+    <h1 class="red234">-Paul fisher :)</h1>
+    <h1 class="red234"> leaked the site</h1>
+</ins>
+   <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+   </script>
 
-        openBtn.addEventListener("click", checkCodeAndLaunch);
-        codeInput.addEventListener("keydown", function(e){
-            if (e.key === "Enter") {
-                checkCodeAndLaunch();
-            }
-        });
+    <main>
+        <details id="featuredZonesWrapper" open>
+            <summary id="allZonesSummary" style="font-size: 1.2rem; font-weight: bold; cursor: pointer;">Featured Zones</summary>
+            <div id="featuredZones" class="zone-container"></div>
+        </details>
+        <br><hr><br>
+        <details id="allZonesWrapper" open>
+            <summary id="allSummary" style="font-size: 1.2rem; font-weight: bold; cursor: pointer;">All Zones</summary>
+            <div id="container">Loading...</div>
+        </details>
+    </main>
 
-        toggleDotsBtn.addEventListener("click", function() {
-            dotsHidden = !dotsHidden;
-            if (dotsHidden) {
-                // Show as text (no dots)
-                codeInput.type = "text";
-                toggleDotsBtn.textContent = "Show dots";
-                toggleDotsBtn.classList.add("active");
-            } else {
-                // Show as password (dots)
-                codeInput.type = "password";
-                toggleDotsBtn.textContent = "Hide dots";
-                toggleDotsBtn.classList.remove("active");
-            }
-            codeInput.focus();
-        });
+    <div id="zoneViewer">
+        <div class="zone-header">
+            <div class="zone-title">
+                <h2 id="zoneName">zone</h2>
+                <span id="zoneId" style="display: none;"></span>
+                <a id="zoneAuthor" href="#" target="_blank">by Author</a>
+            </div>
+            <div class="zone-controls">
+                <button onclick="fullscreenZone()">Fullscreen</button>
+                <button onclick="aboutBlank()">Open in New Tab</button>
+                <button onclick="downloadZone()">Download</button>
+                <button onclick="closeZone()">Close</button>
+            </div>
+        </div>
+        <iframe id="zoneFrame"></iframe>
+    </div>
+
+    <div id="popupOverlay">
+        <div class="popup">
+            <div class="popup-header">
+                <h3 id="popupTitle">Title</h3>
+                <button id="popupClose" onclick="closePopup()">×</button>
+            </div>
+            <div id="popupBody">
+                Content will be here
+            </div>
+        </div>
+    </div>
+
+    <ins class="adsbygoogle"
+    style="display:block; text-align:center;"
+    data-ad-client="ca-pub-5521219086088837"
+    data-ad-slot="5549138288"
+    data-ad-format="auto"
+    data-full-width-responsive="true">
+</ins>
+   <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+   </script>
+    <footer>
+        <div class="footer-links">
+            <a href="#" onclick="loadDMCA(); return false;">DMCA</a>
+            <a href="#" onclick="showContact(); return false;">Contact</a>
+            <a href="#" onclick="loadPrivacy(); return false;">Privacy Policy</a>
+            <a href="javascript:saveData()">Export Data</a>
+            <a href="#" onclick="document.getElementById('importData').click(); return false;">Import Data</a>
+            <input type="file" id="importData" style="display: none;" onchange="loadData(event)">
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        const search = new URLSearchParams(window.location.search);
+        const privacy = search.get('privacy');
+        if (privacy) {
+            loadPrivacy();
+        }
     </script>
 </body>
 </html>
+
+
+
+
+
