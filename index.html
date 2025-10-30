@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dopa Launcher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #fff;
+            color: #111;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            min-height: 100vh;
+            min-width: 100vw;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .full {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+        .title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 24px;
+            color: #111;
+        }
+        .desc {
+            font-size: 1.6rem;
+            color: #111;
+            margin-bottom: 40px;
+        }
+        .input {
+            width: 400px;
+            max-width: 90vw;
+            box-sizing: border-box;
+            padding: 26px 22px;
+            border: none;
+            border-bottom: 3px solid #111;
+            border-radius: 0;
+            font-size: 2rem;
+            margin-bottom: 34px;
+            background: #fff;
+            color: #111;
+            outline: none;
+            text-align: center;
+            letter-spacing: 0.3em;
+        }
+        .input.hide-dots {
+            letter-spacing: 0.3em;
+            font-family: Arial, sans-serif;
+        }
+        /* Hide password dots, show clear text */
+        .input.no-dots {
+            font-family: Arial, sans-serif;
+            letter-spacing: normal;
+        }
+        .btn {
+            width: 400px;
+            max-width: 90vw;
+            padding: 26px 0;
+            background: #27ae60;
+            color: #fff;
+            font-size: 2rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: background 0.15s, color 0.15s;
+            margin-bottom: 20px;
+        }
+        .btn:hover, .btn:focus {
+            background: #219150;
+            color: #fff;
+        }
+        .toggle-btn {
+            background: #fff;
+            color: #111;
+            border: 2px solid #111;
+            border-radius: 10px;
+            padding: 10px 22px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 24px;
+            transition: background 0.15s, color 0.15s;
+        }
+        .toggle-btn.active {
+            background: #111;
+            color: #fff;
+        }
+        .error {
+            color: #b00020;
+            font-size: 1.5rem;
+            margin-top: 30px;
+            min-height: 32px;
+            letter-spacing: 0.1px;
+        }
+        @media (max-width: 600px) {
+            .title {
+                font-size: 1.7rem;
+            }
+            .desc {
+                font-size: 1rem;
+            }
+            .input,
+            .btn {
+                font-size: 1.1rem;
+                padding: 14px 0;
+                width: 95vw;
+                max-width: 98vw;
+            }
+            .toggle-btn {
+                font-size: 1rem;
+                padding: 7px 10px;
+            }
+            .error {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="full">
+        <div class="title">Dopa Launch code</div>
+        <div class="desc">Enter launch code to access Mint Games.</div>
+        <input
+            type="password"
+            class="input hide-dots"
+            id="launchCode"
+            maxlength="16"
+            placeholder="Launch code"
+            autocomplete="off"
+            required
+        />
+        <button class="toggle-btn" id="toggleDotsBtn">Hide dots</button>
+        <button class="btn" id="openDopaBtn">Open dopa</button>
+        <div class="error" id="errorMsg"></div>
+    </div>
+    <script>
+        const LAUNCH_CODE = "75301796";
+        const codeInput = document.getElementById("launchCode");
+        const openBtn = document.getElementById("openDopaBtn");
+        const errorMsg = document.getElementById("errorMsg");
+        const toggleDotsBtn = document.getElementById("toggleDotsBtn");
+
+        let dotsHidden = false;
+
+        function checkCodeAndLaunch() {
+            if (codeInput.value.trim() === LAUNCH_CODE) {
+                window.location.href = "games.html";
+            } else {
+                errorMsg.textContent = "Incorrect launch code.";
+                codeInput.value = "";
+                codeInput.focus();
+            }
+        }
+
+        openBtn.addEventListener("click", checkCodeAndLaunch);
+        codeInput.addEventListener("keydown", function(e){
+            if (e.key === "Enter") {
+                checkCodeAndLaunch();
+            }
+        });
+
+        toggleDotsBtn.addEventListener("click", function() {
+            dotsHidden = !dotsHidden;
+            if (dotsHidden) {
+                // Show as text (no dots)
+                codeInput.type = "text";
+                toggleDotsBtn.textContent = "Show dots";
+                toggleDotsBtn.classList.add("active");
+            } else {
+                // Show as password (dots)
+                codeInput.type = "password";
+                toggleDotsBtn.textContent = "Hide dots";
+                toggleDotsBtn.classList.remove("active");
+            }
+            codeInput.focus();
+        });
+    </script>
+</body>
+</html>
